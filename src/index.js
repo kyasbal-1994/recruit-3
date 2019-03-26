@@ -37,7 +37,7 @@ app.post(
     if (users[userId] === undefined) {
       users[userId] = {
         nickname: userId,
-        passwd: sha.x2(passwd)
+        password: sha.x2(passwd)
       };
       return res.status(200).json({
         message: "Account successfully created",
