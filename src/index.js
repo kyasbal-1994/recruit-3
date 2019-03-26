@@ -56,6 +56,7 @@ app.get("/users/:userId", (req, res) => {
   const userId = req.params["userId"];
   const authUser = auth(req);
   if (
+    authUser &&
     users[authUser.name] &&
     users[authUser.name].password == sha.x2(authUser.pass)
   ) {
@@ -93,6 +94,7 @@ app.patch(
     const comment = req.body.comment;
     const authUser = auth(req);
     if (
+      authUser &&
       users[authUser.name] &&
       users[authUser.name].password == sha.x2(authUser.pass)
     ) {
@@ -140,6 +142,7 @@ app.patch(
 app.post("/close", (req, res) => {
   const authUser = auth(req);
   if (
+    authUser &&
     users[authUser.name] &&
     users[authUser.name].password == sha.x2(authUser.pass)
   ) {
