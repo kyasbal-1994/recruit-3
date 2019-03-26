@@ -27,7 +27,10 @@ app.post(
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({
+        message: "Account creation failed",
+        cause: "required user_id and password"
+      });
     }
     const userId = req.body.user_id;
     const passwd = req.body.password;
